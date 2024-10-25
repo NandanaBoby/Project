@@ -6,6 +6,13 @@ let dataArray;
 const canvas = document.getElementById('waveform');
 const canvasCtx = canvas.getContext('2d');
 
+const memes = [
+    'https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22512212/shrek4_disneyscreencaps.com_675.jpg?quality=90&strip=all&crop=44.127604166667%2C30.392156862745%2C36.953125%2C57.96568627451&w=750'
+    // Add more meme URLs as needed
+];
+
+let lastDisplayedDecibels = -20; // Initialize to a value below the lowest threshold
+
 document.getElementById('start').addEventListener('click', startMeasuring);
 document.getElementById('stop').disabled = true;
 
@@ -52,14 +59,36 @@ function measureSound() {
 
     drawWaveform(dataArray);
 
-    // Stop measuring if the decibel level exceeds 150 dB
+    // Check if the decibel level has increased by 20 dB
+    if (adjustedDecibels >= lastDisplayedDecibels + 45) {
+        displayRandomMeme();
+        lastDisplayedDecibels = adjustedDecibels; // Update last displayed level
+    }
+
+    // Stop measuring if the decibel level exceeds 100 dB
     if (adjustedDecibels >= 100) {
         stopMeasuring();
     } else {
-        // Slow down the animation by adjusting the requestAnimationFrame timing
         setTimeout(measureSound, 100); // Adjust time interval (100ms)
     }
 }
+
+function displayRandomMeme() {
+    const memeImg = document.getElementById('meme');
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    memeImg.src = randomMeme;
+    memeImg.style.display = 'block'; // Show the meme
+    memeImg.style.opacity = 1; // Set opacity to 1 for pop-in effect
+
+    // Use setTimeout to fade out the meme after 2 seconds
+    setTimeout(() => {
+        memeImg.style.opacity = 0; // Set opacity to 0 for pop-out effect
+        setTimeout(() => {
+            memeImg.style.display = 'none'; // Hide the meme after fade-out
+        }, 500); // Wait for the fade-out transition to complete
+    }, 2000); // Meme stays visible for 2 seconds
+}
+
 
 function drawWaveform(data) {
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
@@ -79,10 +108,8 @@ function drawWaveform(data) {
         const v = (data[i] - 128) / 128; // Normalize to -1 to 1
         const y = (v * (canvas.height / 2)) + (canvas.height / 2); // Scale and center vertically
 
-        // Adjust for a straight line wave effect
+        // Draw the waveform
         if (i > 0) {
-            const prevX = (i - 1) * barWidth;
-            const prevY = (data[i - 1] - 128) / 128 * (canvas.height / 2) + (canvas.height / 2);
             canvasCtx.lineTo(i * barWidth, y); // Create line to current point
         } else {
             canvasCtx.moveTo(i * barWidth, y); // Move to the first point
