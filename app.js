@@ -53,7 +53,7 @@ function measureSound() {
     drawWaveform(dataArray);
 
     // Stop measuring if the decibel level exceeds 150 dB
-    if (adjustedDecibels >= 150) {
+    if (adjustedDecibels >= 100) {
         stopMeasuring();
     } else {
         // Slow down the animation by adjusting the requestAnimationFrame timing
