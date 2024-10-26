@@ -9,9 +9,9 @@ const canvasCtx = canvas.getContext('2d');
 // Array of objects containing decibel thresholds and corresponding meme URLs
 const memes = [
     { threshold: 45, url: 'https://media1.tenor.com/m/DBDpIRGsqH8AAAAd/dance.gif' }, // Low scream
-    { threshold: 60, url: 'https://media.tenor.com/MzNar3M97SYAAAAi/shrek-my-honest-reaction.gif' }, // Medium scream
-    { threshold: 70, url: 'https://media1.tenor.com/m/FWGu8g6PsD8AAAAC/shrek.gif' }, // High scream
-    { threshold: 100, url: 'https://media1.tenor.com/m/otzq-FJMJmoAAAAC/wsup-bring.gif' } // Max scream
+    { threshold: 55, url: 'https://media.tenor.com/MzNar3M97SYAAAAi/shrek-my-honest-reaction.gif' }, // Medium scream
+    { threshold: 65, url: 'https://media1.tenor.com/m/FWGu8g6PsD8AAAAC/shrek.gif' }, // High scream
+    { threshold: 75, url: 'https://media1.tenor.com/m/otzq-FJMJmoAAAAC/wsup-bring.gif' } // Max scream
 ];
 
 let lastDisplayedDecibels = -20; // Initialize to a value below the lowest threshold
