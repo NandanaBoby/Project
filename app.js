@@ -6,9 +6,12 @@ let dataArray;
 const canvas = document.getElementById('waveform');
 const canvasCtx = canvas.getContext('2d');
 
+// Array of objects containing decibel thresholds and corresponding meme URLs
 const memes = [
-    'https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22512212/shrek4_disneyscreencaps.com_675.jpg?quality=90&strip=all&crop=44.127604166667%2C30.392156862745%2C36.953125%2C57.96568627451&w=750'
-    // Add more meme URLs as needed
+    { threshold: 45, url: 'https://media1.tenor.com/m/DBDpIRGsqH8AAAAd/dance.gif' }, // Low scream
+    { threshold: 60, url: 'https://media.tenor.com/MzNar3M97SYAAAAi/shrek-my-honest-reaction.gif' }, // Medium scream
+    { threshold: 70, url: 'https://media1.tenor.com/m/FWGu8g6PsD8AAAAC/shrek.gif' }, // High scream
+    { threshold: 100, url: 'https://media1.tenor.com/m/otzq-FJMJmoAAAAC/wsup-bring.gif' } // Max scream
 ];
 
 let lastDisplayedDecibels = -20; // Initialize to a value below the lowest threshold
@@ -59,11 +62,13 @@ function measureSound() {
 
     drawWaveform(dataArray);
 
-    // Check if the decibel level has increased by 20 dB
-    if (adjustedDecibels >= lastDisplayedDecibels + 45) {
-        displayRandomMeme();
-        lastDisplayedDecibels = adjustedDecibels; // Update last displayed level
-    }
+    // Check if the current decibel level is above any defined thresholds
+    memes.forEach(meme => {
+        if (adjustedDecibels >= meme.threshold && lastDisplayedDecibels < meme.threshold) {
+            displayMeme(meme.url); // Display the meme corresponding to the threshold
+            lastDisplayedDecibels = adjustedDecibels; // Update last displayed level
+        }
+    });
 
     // Stop measuring if the decibel level exceeds 100 dB
     if (adjustedDecibels >= 100) {
@@ -73,28 +78,11 @@ function measureSound() {
     }
 }
 
-function displayRandomMeme() {
-    const memeImg = document.getElementById('meme');
-    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-    memeImg.src = randomMeme;
-    memeImg.style.display = 'block'; // Show the meme
-    memeImg.style.opacity = 1; // Set opacity to 1 for pop-in effect
-
-    // Use setTimeout to fade out the meme after 2 seconds
-    setTimeout(() => {
-        memeImg.style.opacity = 0; // Set opacity to 0 for pop-out effect
-        setTimeout(() => {
-            memeImg.style.display = 'none'; // Hide the meme after fade-out
-        }, 500); // Wait for the fade-out transition to complete
-    }, 2000); // Meme stays visible for 2 seconds
-}
-function displayRandomMeme() {
-    const memeImg = document.getElementById('meme');
+function displayMeme(url) {
     const popup = document.getElementById('popup');
     const popupGif = document.getElementById('popup-gif');
 
-    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-    popupGif.src = randomMeme; // Set the source of the pop-up GIF
+    popupGif.src = url; // Set the source of the pop-up GIF
     popup.style.display = 'block'; // Show the pop-up
 }
 function closePopup() {
