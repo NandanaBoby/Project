@@ -1,5 +1,5 @@
 
-# [Project Name] 🎯
+# [Project Scream] 🎯
 
 
 ## Basic Details
@@ -24,9 +24,9 @@ Our scream page
 ### Technologies/Components Used
 For Software:
 - HTML, CSS, JavaScript
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [Does not rely on external frameworks ]
+- [Does not rely on external libraries]
+- [VS Code, Chrome, GitHub, Live Server]
 
 For Hardware:
 - [List main components]
