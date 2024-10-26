@@ -3,27 +3,27 @@
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name:N3
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Niranjana R Nair - SCMS School of Engineering and Technology
+- Member 2: Nandhana V P - SCMS School of Engineering and Technology
+- Member 3: Nandana Boby - SCMS School of Engineering and Technology
 
 ### Project Description
-[2-3 lines about what your project does]
+A rage room, where u scream your rage out but also gaslights us into rage again.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+A place or purpose to scream it out
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Our scream page
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- HTML, CSS, JavaScript
 - [Frameworks used]
 - [Libraries used]
 - [Tools used]
