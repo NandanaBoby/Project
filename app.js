@@ -14,7 +14,7 @@ const memes = [
 let lastDisplayedDecibels = -20; // Initialize to a value below the lowest threshold
 
 document.getElementById('start').addEventListener('click', startMeasuring);
-document.getElementById('stop').disabled = true;
+document.getElementById('close-popup').addEventListener('click', closePopup);
 
 async function startMeasuring() {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -88,7 +88,19 @@ function displayRandomMeme() {
         }, 500); // Wait for the fade-out transition to complete
     }, 2000); // Meme stays visible for 2 seconds
 }
+function displayRandomMeme() {
+    const memeImg = document.getElementById('meme');
+    const popup = document.getElementById('popup');
+    const popupGif = document.getElementById('popup-gif');
 
+    const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+    popupGif.src = randomMeme; // Set the source of the pop-up GIF
+    popup.style.display = 'block'; // Show the pop-up
+}
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none'; // Hide the pop-up
+}
 
 function drawWaveform(data) {
     canvasCtx.clearRect(0, 0, canvas.width, canvas.height);

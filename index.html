@@ -52,6 +52,41 @@
             border: 1px solid #ccc;
             margin-top: 20px;
         }
+        #meme-container {
+            position: relative;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+        #meme {
+            display: none;
+            position: absolute; 
+            transition: opacity 0.5s;
+            max-width: 100%;
+        }
+        /* Pop-up GIF styles */
+        #popup {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; /* Above all other content */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+        }
+        #popup img {
+            max-width: 300px; /* Limit GIF size */
+        }
+        #close-popup {
+            margin-top: 10px;
+            background-color: #f90000;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +94,11 @@
     <div id="output">Decibels: 0</div>
     <button id="start">Start Screaming</button>
     <canvas id="waveform"></canvas>
+    <div id="popup">
+        <img id="popup-gif" src="" alt="Pop-Up GIF">
+        <button id="close-popup">Close</button>
+    </div>
+
     
     <script src="app.js"></script>
 </body>
