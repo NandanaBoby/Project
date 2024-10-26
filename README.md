@@ -59,12 +59,6 @@ Components
 HTML: Provides the structure of the user interface.
 CSS: Styles the application for a better user experience.
 JavaScript: Implements the core functionality, including audio processing, waveform visualization, and message handling.
-File Structure
-less
-/audio-analysis-program
-|-- index.html       // Main HTML file
-|-- script.js        // JavaScript code for functionality
-|-- style.css        // (Optional) CSS styles
 Detailed Description of Components
 HTML (index.html)
 Contains buttons for starting and stopping audio measurement.
@@ -156,9 +150,9 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Niranjana R Nair: Scream meter functionality
+- Nandhana V P: UI designing and layout
+- Nandana Boby: Idea implementation and js
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
